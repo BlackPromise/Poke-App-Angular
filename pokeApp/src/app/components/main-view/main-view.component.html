@@ -1,0 +1,31 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Home</li>
+    </ol>
+</nav>
+<div class="row">
+    <app-main-card-view class="col-sm-4 col-md-3 col-lg-3 col-xl-3" [item]="item" *ngFor="let item of data">
+    </app-main-card-view>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item" *ngIf="pagina > 1 && lstpaginas.length > 0" (click)="irPrimeraPagina()">
+            <a class="page-link" href="#/#;p=1">Previous</a>
+        </li>
+        <ng-template ngFor let-pag [ngForOf]="lstpaginas">
+            <li class="page-item"
+                *ngIf="( pag > limites.max && (( pagina==lstpaginas.length - 3 && pag ==lstpaginas.length  ) || ( pagina==lstpaginas.length - 4 && pag ==lstpaginas.length -1 ))) || (pag > limites.max && pag == lstpaginas.length -1)">
+                <a class="page-link">...</a></li>
+            <li class="page-item" (click)="irAPagina(pag);"  [class.active]="pag==pagina"
+                *ngIf="(pag >= limites.min && pag <= limites.max) || (pag < limites.min && pag <= 2) || (pag > limites.max  && pag >= lstpaginas.length - 1)">
+                <a class="page-link"  [href]="'#/#;p=' + pag ">{{pag}}</a>
+            </li>
+            <li class="page-item"
+                *ngIf="( pag < limites.min && (( pagina==4 && pag ==1 ) || ( pagina==5 && pag ==2 ))) || (pag < limites.min && pag == 2)">
+                <a class="page-link">...</a></li>
+        </ng-template>
+        <li class="page-item" *ngIf="pagina < lstpaginas.length" (click)="irUltimaPagina()">
+            <a class="page-link" [href]="'#/#;p=' + lstpaginas.length ">Next</a>
+        </li>
+    </ul>
+</nav>

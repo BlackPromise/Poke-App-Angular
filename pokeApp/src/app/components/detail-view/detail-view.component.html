@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="#">Home</a></li>
+        <li class="breadcrumb-item">Detail</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="no-gutters">
+                <img [src]="item.img" class="card-img-top">
+            </div>
+        </div>
+        <br>
+        <div class="carouselContainer">
+            <div class="row carousel">
+                <div class="col-lg-12" *ngFor="let item of info.spritesArray;let i = index" [attr.data-index]="i"
+                    [ngStyle]="{'animation-delay':(i*3).toString() + 's','animation-duration':((info.spritesArray.length * 3) ).toString() + 's'}">
+                    <div class="card">
+                        <img [src]="item.value" class="card-img-top" alt="...">
+                        <h6 class="card-subtitle mb-2 text">{{item.key.replace('_',' ')}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <blockquote class="blockquote">
+            <p class="mb-0 bd-highlight">{{ item.name }}</p>
+            <footer class="blockquote-footer"><cite title="Source Title">{{item.description}}</cite></footer>
+        </blockquote>
+    <p class="font-weight-bold ">Abilities.</p>
+    <p class="font-weight-normal blockquote-footer" *ngFor="let item of item.abilities">
+        {{item.name}} : 
+        <span class="text-muted">{{item.description}}</span>
+    </p>
+    
+    </div>
+</div>

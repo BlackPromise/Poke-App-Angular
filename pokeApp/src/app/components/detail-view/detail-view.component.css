@@ -1,0 +1,48 @@
+@keyframes display {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+:host /deep/ .carouselContainer{
+  min-height: 380px;
+    overflow: hidden;
+}
+
+:host /deep/ .carousel > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: display 10s infinite;
+}
+
+:host /deep/ .card .text{
+    text-align: center;
+    color: #9e9e9ea6;
+}
+:host /deep/ .bd-highlight {
+    background-color: rgb(233, 236, 239);
+    border: rgb(216, 220, 224) solid 1px;
+    padding-left: 10px;
+    width: 25px;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
